@@ -1,6 +1,6 @@
 import express from 'express';
 import file_utills from '../../utills/file_utills';
-import sharp from 'sharp';
+import image_processing from '../../utills/image_processing';
 import path from 'path';
 
 const routes = express.Router();
@@ -40,9 +40,7 @@ routes.get('/', async (req, res) => {
 
     // Resize the image and save it to the thumb directory
     try {
-        await sharp(originalImagePath)
-            .resize(width, height)
-            .toFile(thumbPath);
+        await image_processing.resizeImage(originalImagePath, thumbPath, width, height);
         return res.status(200).sendFile(thumbPath);
     } catch (error) {
         console.error('Error processing image:', error);

@@ -43,14 +43,17 @@ It is built with TypeScript and uses Sharp module for high-performance image pro
 
 ## Project Structure
 - `src/`: Contains the source code for the API.
-  - `index.ts`: The main entry point of the application.
+    - `index.ts`: The main entry point of the application.
     - `routes/`: Contains the route handlers for the API.
-        - `images.ts`: The route handler for image resizing.
+        - `api/images.ts`: The route handler for image resizing.
+    - `tests/`: Contains the test cases for the API.
+        - `indexSpec.ts`: The test cases for the image resizing functionality.
+    - `utills/`: Contains utilities that help in use files/images in project.
+        - `file_utills.ts`: Contains helper function to deal with files.
+        - `image_processing.ts`: Contains helper function to resize images.
 - `images/`: Contains the original and resized images.
-  - `origin/`: Contains the original images.
-  - `thumb/`: Contains the resized images (thumbnails).
-- `tests/`: Contains the test cases for the API.
-  - `indexSpec.ts`: The test cases for the image resizing functionality.
+    - `origin/`: Contains the original images.
+    - `thumb/`: Contains the resized images (thumbnails).
 
 ## Dependencies
 - `express`: Web framework for Node.js.
