@@ -1,35 +1,38 @@
 {
-  "name": "image_processing",
-  "version": "1.0.0",
-  "description": "resizing images",
-  "license": "ISC",
-  "author": "Imad Hindi",
-  "type": "commonjs",
-  "main": "index.js",
-  "scripts": {
-    "prettier": "prettier --config prettierrc.json \"src/**/*.js\" --write",
-    "build": "npx tsc",
-    "start": "nodemon src/index.ts",
-    "jasmine": "jasmine"
-  },
-  "devDependencies": {
-    "@types/express": "^5.0.6",
-    "@types/jasmine": "^6.0.0",
-    "@types/node": "^25.3.3",
-    "@types/supertest": "^7.2.0",
-    "eslint": "^10.0.2",
-    "eslint-config-prettier": "^10.1.8",
-    "eslint-plugin-prettier": "^5.5.5",
-    "jasmine": "^6.1.0",
-    "jasmine-spec-reporter": "^7.0.0",
-    "nodemon": "^3.1.14",
-    "prettier": "^3.8.1",
-    "sharp": "^0.34.5",
-    "supertest": "^7.2.2",
-    "ts-node": "^10.9.2",
-    "typescript": "^5.9.3"
-  },
-  "dependencies": {
-    "express": "^5.2.1"
-  }
+    "name": "image_processing",
+    "version": "1.0.0",
+    "description": "resizing images",
+    "license": "ISC",
+    "author": "Imad Hindi",
+    "type": "commonjs",
+    "main": "index.js",
+    "scripts": {
+        "format": "prettier --write .",
+        "lint": "eslint",
+        "build": "npx tsc",
+        "start": "nodemon dist/index.js",
+        "test": "jasmine"
+    },
+    "devDependencies": {
+        "@eslint/js": "^10.0.1",
+        "@types/express": "^5.0.6",
+        "@types/jasmine": "^6.0.0",
+        "@types/node": "^25.3.3",
+        "@types/supertest": "^7.2.0",
+        "eslint": "^10.0.2",
+        "eslint-config-prettier": "^10.1.8",
+        "eslint-plugin-prettier": "^5.5.5",
+        "jasmine": "^6.1.0",
+        "jasmine-spec-reporter": "^7.0.0",
+        "nodemon": "^3.1.14",
+        "prettier": "^3.8.1",
+        "sharp": "^0.34.5",
+        "supertest": "^7.2.2",
+        "ts-node": "^10.9.2",
+        "typescript": "^5.9.3",
+        "typescript-eslint": "^8.56.1"
+    },
+    "dependencies": {
+        "express": "^5.2.1"
+    }
 }

@@ -11,25 +11,37 @@ routes.get('/', async (req, res) => {
     const heightStr = req.query.height as string;
 
     // Validate query parameters
-    if (!filename){
-            return res.status(400).json({ error: 'Missing required query parameter: filename' });
+    if (!filename) {
+        return res
+            .status(400)
+            .json({ error: 'Missing required query parameter: filename' });
     }
-    if(!widthStr || !heightStr) {
-        return res.status(400).json({ error: 'Missing required query parameters: width and height' });
+    if (!widthStr || !heightStr) {
+        return res.status(400).json({
+            error: 'Missing required query parameters: width and height',
+        });
     }
 
     const width = parseInt(widthStr, 10);
     const height = parseInt(heightStr, 10);
     // Validate width and height
     if (isNaN(width) || isNaN(height) || width <= 0 || height <= 0) {
-        return res.status(400).json({ error: 'Width and height must be positive integers' });
+        return res
+            .status(400)
+            .json({ error: 'Width and height must be positive integers' });
     }
 
-    const originalImagePath = path.join(__dirname, `./../../../images/origin/${filename}.jpg`);
-    const thumbPath = path.join(__dirname, `./../../../images/thumb/${filename}_thumb_${width}x${height}.jpg`);
+    const originalImagePath = path.join(
+        __dirname,
+        `./../../../images/origin/${filename}.jpg`,
+    );
+    const thumbPath = path.join(
+        __dirname,
+        `./../../../images/thumb/${filename}_thumb_${width}x${height}.jpg`,
+    );
 
     // Check if original image exists
-    if (!await file_utills.fileExists(originalImagePath)) {
+    if (!(await file_utills.fileExists(originalImagePath))) {
         return res.status(404).json({ error: 'Original image not found' });
     }
 
@@ -40,13 +52,17 @@ routes.get('/', async (req, res) => {
 
     // Resize the image and save it to the thumb directory
     try {
-        await image_processing.resizeImage(originalImagePath, thumbPath, width, height);
+        await image_processing.resizeImage(
+            originalImagePath,
+            thumbPath,
+            width,
+            height,
+        );
         return res.status(200).sendFile(thumbPath);
     } catch (error) {
         console.error('Error processing image:', error);
         return res.status(500).json({ error: 'Error processing image' });
     }
-
 });
 
 export default routes;
